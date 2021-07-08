@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User List</h1>
+ <%= link_to 'New User', new_user_path, class: "btn btn-info btn-float tooltips" %>
+  <table class="table table-hover" id="user">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+<%= binding.pry %>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr class="table-secondary">
+          <td><%= user.id %></td>
+          
+          <td><%= user.email %></td>
+          <td>
+          <%= link_to user, :class => "btn btn-crud-action btn-xs tooltips" do %>
+            <i class="glyphicon glyphicon-list-alt"></i>
+          <% end %>
+          </td>
+          <td>
+          <%= link_to edit_user_path(user), class: "btn btn-default btn btn-success" do %>
+            <i class="glyphicon glyphicon-edit"></i>
+          <% end %>
+          </td>
+          <td>
+          <%= link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn btn-danger" do %>
+            <i class="glyphicon glyphicon-trash"></i>
+          <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+
